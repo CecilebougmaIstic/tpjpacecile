@@ -2,32 +2,34 @@ package jpa;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+/*This class manage an appointement */
 
-@Entity
 public class Appointement{
+	
+	/*Variables*/
 	private long id;
-	private Date dateRdv;
-	private String description;
+	private Date appointementStart;
+	private Date appointementEnd;
+	private String appointementPlace;
 	
-	
-	public Appointement() {}
-	
-	public Appointement(long id, Date date, String description) {
-		this.id=id;
-		this.dateRdv = date;
-		this.description = description;
-		
+	/*Construtors*/	
+	public Appointement(long id, Date appointementStart, Date appointementEnd, String appointementPlace) {
+		super();
+		this.id = id;
+		this.appointementStart = appointementStart;
+		this.appointementEnd = appointementEnd;
+		this.appointementPlace = appointementPlace;
 	}
-	public Appointement (Date date, String description) {
-		this.dateRdv = date;
-		this.description = description;
-		
+
+	public Appointement(Date appointementStart, Date appointementEnd, String appointementPlace) {
+		super();
+		this.appointementStart = appointementStart;
+		this.appointementEnd = appointementEnd;
+		this.appointementPlace = appointementPlace;
 	}
-	@Id
-    @GeneratedValue
+
+	
+	/*Getters && Setters*/
 	public long getId() {
 		return id;
 	}
@@ -36,22 +38,39 @@ public class Appointement{
 		this.id = id;
 	}
 
-	public Date getDateRdv() {
-		return dateRdv;
+	public Date getAppointementStart() {
+		return appointementStart;
 	}
 
-	public void setDateRdv(Date dateRdv) {
-		this.dateRdv = dateRdv;
+	public void setAppointementStart(Date appointementStart) {
+		this.appointementStart = appointementStart;
 	}
 
-	public String getDescription() {
-		return description;
+	public Date getAppointementEnd() {
+		return appointementEnd;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setAppointementEnd(Date appointementEnd) {
+		this.appointementEnd = appointementEnd;
+	}
+
+	public String getAppointementPlace() {
+		return appointementPlace;
+	}
+
+	public void setAppointementPlace(String appointementPlace) {
+		this.appointementPlace = appointementPlace;
 	}
 	
+
+	
+	
+	
+	
+	
+	
+	
+
 	
 
 }
