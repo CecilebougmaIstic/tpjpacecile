@@ -1,12 +1,27 @@
 package jpa;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+@Entity
+
+@DiscriminatorValue("W")
 public class Worker extends User{
 	
 	/*Variables*/
 	private long id;
 	private String job;
 	private String bakRib;
-	
+	/*111111mapping relatation*/
+	/*One Worker can have many apointement*/
+	@OneToMany
+	@JoinColumn(name="id", nullable=false)
+	private Appointement app;
 	
 /*Constructor*/
 	public Worker(long id, String job, String bakRib) {
@@ -24,6 +39,9 @@ public class Worker extends User{
 	}
 
 	/*Getters && Setters*/
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}

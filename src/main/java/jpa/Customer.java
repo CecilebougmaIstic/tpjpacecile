@@ -1,12 +1,25 @@
 package jpa;
 
-/*This class create a customer*/
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+/*This class create a customer*/
+@Entity
+
+@DiscriminatorValue("C")
 public class Customer extends User{
 	
 	/*variables*/
 	private long id;
 	private String bankCard;
+	@ManyToOne
+	@JoinColumn(name="id", nullable=false)
+	private Appointement appointement;
 	
 	/*Constructor*/
 
@@ -18,6 +31,9 @@ public class Customer extends User{
 	
 	
 	/*Getters && Setters*/
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}

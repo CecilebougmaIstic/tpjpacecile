@@ -1,20 +1,26 @@
 package jpa;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 /*This class manage a User*/
-
-/*An objet, type Enum for 2 types of a user*/
-enum TypeUser{
-	WORKER, CUSTOMER
-}
-
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="User_type")
 public abstract class User {
 	
 	/*Variables*/	
 	private long id;
-	private String namefirstName;
+	private String firstName;
 	private String lastName;
 	private String email;
 	private String password;
+	
 	
 	/*Constructors*/
 	public User() {
@@ -24,14 +30,14 @@ public abstract class User {
 	public User(long id, String namefirstName, String lastName, String email, String password) {
 		super();
 		this.id = id;
-		this.namefirstName = namefirstName;
+		this.firstName = namefirstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 	}
 	public User(String namefirstName, String lastName, String email, String password) {
 		super();
-		this.namefirstName = namefirstName;
+		this.firstName = namefirstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
@@ -44,17 +50,20 @@ public abstract class User {
 	
 	
 	/*Getters && Setters*/	
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getNamefirstName() {
-		return namefirstName;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setNamefirstName(String namefirstName) {
-		this.namefirstName = namefirstName;
+	public void setFirstName(String namefirstName) {
+		this.firstName = namefirstName;
 	}
 	public String getLastName() {
 		return lastName;

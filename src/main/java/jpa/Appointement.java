@@ -2,8 +2,16 @@ package jpa;
 
 import java.util.Date;
 
-/*This class manage an appointement */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+/*This class manage an appointement */
+@Entity
 public class Appointement{
 	
 	/*Variables*/
@@ -11,7 +19,16 @@ public class Appointement{
 	private Date appointementStart;
 	private Date appointementEnd;
 	private String appointementPlace;
-	
+	/*Mapping relation*/
+	@ManyToOne
+	@JoinColumn(name="id", nullable=false)
+	private TypeOfAppointement typeAppointement;
+	@OneToMany
+	@JoinColumn(name="id", nullable=false)
+	private Customer customer;
+	@ManyToOne
+	@JoinColumn(name="id", nullable=false)
+	private Worker worker;
 	/*Construtors*/	
 	public Appointement(long id, Date appointementStart, Date appointementEnd, String appointementPlace) {
 		super();
@@ -30,6 +47,9 @@ public class Appointement{
 
 	
 	/*Getters && Setters*/
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}

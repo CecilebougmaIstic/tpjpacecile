@@ -17,7 +17,11 @@ public class JpaTest {
 
 
 		try {
-
+				Worker wok = new Worker("mecanicine","12356");
+				manager.persist(wok);
+				
+				
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
