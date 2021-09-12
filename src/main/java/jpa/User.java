@@ -16,10 +16,10 @@ public abstract class User {
 	
 	/*Variables*/	
 	private long id;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String password;
+	protected String firstName;
+	protected String lastName;
+	protected String email;
+	protected String password;
 	
 	
 	/*Constructors*/

@@ -23,11 +23,9 @@ public class Appointement{
 	@ManyToOne
 	@JoinColumn(name="id", nullable=false)
 	private TypeOfAppointement typeAppointement;
-	@OneToMany
-	@JoinColumn(name="id", nullable=false)
+	
 	private Customer customer;
-	@ManyToOne
-	@JoinColumn(name="id", nullable=false)
+	
 	private Worker worker;
 	/*Construtors*/	
 	public Appointement(long id, Date appointementStart, Date appointementEnd, String appointementPlace) {
@@ -80,6 +78,24 @@ public class Appointement{
 
 	public void setAppointementPlace(String appointementPlace) {
 		this.appointementPlace = appointementPlace;
+	}
+	@ManyToOne
+	@JoinColumn(name="id", nullable=false)
+	public Worker getWorker() {
+		return worker;
+	}
+
+	public void setWorker(Worker worker) {
+		this.worker = worker;
+	}
+	@ManyToOne
+	@JoinColumn(name="id", nullable=false)
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	
 

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /*with this class a professionnal can manage a type of an appointement
  * describe and duration of an appointement
@@ -23,6 +24,13 @@ public class TypeOfAppointement {
 	@OneToMany
     @JoinColumn(name="id", nullable=false)
 	private Appointement appointment;
+	@OneToOne
+	@JoinColumn(name="id", nullable=false)
+	private Worker worker;
+	@OneToOne
+	@JoinColumn(name="id", nullable=false)
+	private Customer customer;
+	
 	
 	/*Constructors*/
 	public TypeOfAppointement(long id, String appointementDescription, int appointementLimit) {
