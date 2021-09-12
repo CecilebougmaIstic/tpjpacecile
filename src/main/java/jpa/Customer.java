@@ -1,5 +1,9 @@
 package jpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /*This class create a customer*/
 @Entity
@@ -17,10 +22,7 @@ public class Customer extends User{
 	/*variables*/
 	private long id;
 	private String bankCard;
-	/*Mapping relation*/
-	@ManyToOne
-	@JoinColumn(name="id", nullable=false)
-	private Appointement appointement;
+	private List<Appointement> appointement = new ArrayList<Appointement>();
 	
 	/*Constructor*/
 
@@ -60,6 +62,14 @@ public class Customer extends User{
 	}
 	public void setBankCard(String bankCard) {
 		this.bankCard = bankCard;
+	}
+	@OneToMany(mappedBy = "Customer", cascade = CascadeType.PERSIST)
+	public List<Appointement> getAppointement() {
+		return appointement;
+	}
+
+	public void setAppointement(List<Appointement> appointement) {
+		this.appointement = appointement;
 	}
 	
 	

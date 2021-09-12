@@ -17,7 +17,7 @@ public class JpaTest {
 
 
 		try {
-				Worker wok = new Worker("mecanicine","12356");
+				Worker wok = new Worker("Bouda","Jérôme","boudajerome@fff.com","asdc","mecanisien","12356");
 				manager.persist(wok);
 				
 				

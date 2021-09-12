@@ -1,5 +1,9 @@
 package jpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,15 +24,8 @@ public class TypeOfAppointement {
 	private long id;
 	private String appointementDescription;
 	private int appointementLimit;
-	
-	@OneToMany
-    @JoinColumn(name="id", nullable=false)
-	private Appointement appointment;
-	@OneToOne
-	@JoinColumn(name="id", nullable=false)
+	private List<Appointement> appointement = new ArrayList<Appointement>();	
 	private Worker worker;
-	@OneToOne
-	@JoinColumn(name="id", nullable=false)
 	private Customer customer;
 	
 	
@@ -72,6 +69,32 @@ public class TypeOfAppointement {
 
 	public void setAppointementLimit(int appointementLimit) {
 		this.appointementLimit = appointementLimit;
+	}
+	@OneToMany(mappedBy = "TypeOfAppointement", cascade = CascadeType.PERSIST)
+	public List<Appointement> getAppointement() {
+		return appointement;
+	}
+
+	public void setAppointement(List<Appointement> appointement) {
+		this.appointement = appointement;
+	}
+	@OneToOne
+	@JoinColumn(name="id", nullable=false)
+	public Worker getWorker() {
+		return worker;
+	}
+
+	public void setWorker(Worker worker) {
+		this.worker = worker;
+	}
+	@OneToOne
+	@JoinColumn(name="id", nullable=false)
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	
 	

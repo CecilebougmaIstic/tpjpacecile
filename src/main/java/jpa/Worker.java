@@ -24,7 +24,7 @@ public class Worker extends User{
 	private String job;
 	private String bakRib;
 	private List<TypeOfAppointement> typeApp = new ArrayList<TypeOfAppointement>();
-	private List<Appointement> app = new ArrayList<Appointement>();
+	private List<Appointement> appointements = new ArrayList<Appointement>();
 	
 	
 	
@@ -88,7 +88,7 @@ public class Worker extends User{
 	
 	
 	
-	@OneToMany(mappedBy = "TypeOfAppointement", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "Worker", cascade = CascadeType.PERSIST)
 	public List<TypeOfAppointement> getTypeApp() {
 			return typeApp;
 		}
@@ -98,14 +98,14 @@ public class Worker extends User{
 			this.typeApp = typeApp;
 		}
 
-		@OneToMany(mappedBy = "Appointement", cascade = CascadeType.PERSIST)
-		public List<Appointement> getApp() {
-			return app;
+		@OneToMany(mappedBy = "Worker", cascade = CascadeType.PERSIST)
+		public List<Appointement> getAppointements() {
+			return appointements;
 		}
 
 
-		public void setApp(List<Appointement> app) {
-			this.app = app;
+		public void setAppointements(List<Appointement> app) {
+			this.appointements = app;
 		}
 
 	
