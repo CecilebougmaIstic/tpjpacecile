@@ -1,4 +1,4 @@
-package jpa;
+package doctolibService.model;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;

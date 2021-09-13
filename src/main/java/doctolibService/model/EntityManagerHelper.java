@@ -1,4 +1,4 @@
-package jpa;
+package doctolibService.model;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

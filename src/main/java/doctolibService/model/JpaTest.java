@@ -1,4 +1,6 @@
-package jpa;
+package doctolibService.model;
+
+import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -20,11 +22,15 @@ public class JpaTest {
 				Worker wok = new Worker("Bouda","Jérôme","boudajerome@fff.com","asdc","mecanisien","12356");
 				manager.persist(wok);
 				System.out.println(wok.toString());
+				TypeOfAppointement repairBicyclette = new TypeOfAppointement("Disponible pour toute réparations sur un vélo", 30, wok);
+				manager.persist(repairBicyclette);
+				System.out.println(repairBicyclette.toString());
+			
 				Customer customer = new Customer("Berenie","Machinois","berenicemachinois@yahoo.fr", "ascl", "2CFG521");
 				manager.persist(customer);
-				TypeOfAppointement reparerUnVelo = new TypeOfAppointement("Disponible pour toute réparations sur un vélo", 30, wok);
-				manager.persist(reparerUnVelo);
-				System.out.println(reparerUnVelo.toString());
+				//Appointement appointementRepairBicyclette = new Appointement(today(), 2021-10-05, "Place de la république",
+					//	repairBicyclette.toString(),customer);
+				//System.out.println(appointementRepairBicyclette.toString());
 				Worker woker = new Worker("Balime","minet","balimaminet@yahoo.fr","adcvf", "Sécretaire", "12sdd58");
 				manager.persist(woker);
 				

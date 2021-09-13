@@ -1,6 +1,7 @@
-package jpa;
+package doctolibService.model;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.Calendar;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -19,8 +20,8 @@ public class Appointement{
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	private Date appointementStart;
-	private Date appointementEnd;
+	private Calendar appointementStart;
+	private Calendar appointementEnd;
 	private String appointementPlace;
 	
 	@ManyToOne
@@ -33,15 +34,9 @@ public class Appointement{
 	@JoinColumn(name="worker_id", nullable=false)
 	private Worker worker;
 	/*Construtors*/	
-	public Appointement(long id, Date appointementStart, Date appointementEnd, String appointementPlace) {
-		super();
-		this.id = id;
-		this.appointementStart = appointementStart;
-		this.appointementEnd = appointementEnd;
-		this.appointementPlace = appointementPlace;
-	}
+	
 
-	public Appointement(Date appointementStart, Date appointementEnd, String appointementPlace) {
+	public Appointement(Calendar appointementStart, Calendar appointementEnd, String appointementPlace) {
 		super();
 		this.appointementStart = appointementStart;
 		this.appointementEnd = appointementEnd;
@@ -49,7 +44,7 @@ public class Appointement{
 	}
 
 
-	public Appointement(Date appointementStart, Date appointementEnd, String appointementPlace,
+	public Appointement(Calendar appointementStart, Calendar appointementEnd, String appointementPlace,
 			TypeOfAppointement typeAppointement, Customer customer) {
 		super();
 		this.appointementStart = appointementStart;
@@ -59,7 +54,7 @@ public class Appointement{
 		this.customer = customer;
 	}
 
-	public Appointement(Date appointementStart, Date appointementEnd, String appointementPlace,
+	public Appointement(Calendar appointementStart, Calendar appointementEnd, String appointementPlace,
 			TypeOfAppointement typeAppointement, Worker worker) {
 		super();
 		this.appointementStart = appointementStart;
@@ -82,19 +77,19 @@ public class Appointement{
 		this.id = id;
 	}
 
-	public Date getAppointementStart() {
+	public Calendar getAppointementStart() {
 		return appointementStart;
 	}
 
-	public void setAppointementStart(Date appointementStart) {
+	public void setAppointementStart(Calendar appointementStart) {
 		this.appointementStart = appointementStart;
 	}
 
-	public Date getAppointementEnd() {
+	public Calendar getAppointementEnd() {
 		return appointementEnd;
 	}
 
-	public void setAppointementEnd(Date appointementEnd) {
+	public void setAppointementEnd(Calendar appointementEnd) {
 		this.appointementEnd = appointementEnd;
 	}
 

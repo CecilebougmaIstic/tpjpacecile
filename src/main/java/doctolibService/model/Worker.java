@@ -1,4 +1,4 @@
-package jpa;
+package doctolibService.model;
 
 import java.util.ArrayList;
 import java.util.List;
