@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,10 +21,17 @@ import javax.persistence.OneToOne;
 public class Worker extends User{
 	
 	/*Variables*/
+	 @Id
+	 @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private String job;
 	private String bakRib;
-	private List<TypeOfAppointement> typeApp = new ArrayList<TypeOfAppointement>();
+	
+	@OneToMany(mappedBy = "worker", cascade = CascadeType.PERSIST)
+	@ElementCollection
+	private List<TypeOfAppointement> typeAppointements = new ArrayList<TypeOfAppointement>();
+	/*@OneToMany(mappedBy = "worker", cascade = CascadeType.PERSIST)*/
+	@ElementCollection
 	private List<Appointement> appointements = new ArrayList<Appointement>();
 	
 	
@@ -55,8 +63,7 @@ public class Worker extends User{
 
 	/*Getters && Setters*/
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+   
 	public long getId() {
 		return id;
 	}
@@ -88,20 +95,22 @@ public class Worker extends User{
 	
 	
 	
-	@OneToMany(mappedBy = "Worker", cascade = CascadeType.PERSIST)
-	public List<TypeOfAppointement> getTypeApp() {
-			return typeApp;
-		}
 
 
-		public void setTypeApp(List<TypeOfAppointement> typeApp) {
-			this.typeApp = typeApp;
-		}
-
-		@OneToMany(mappedBy = "Worker", cascade = CascadeType.PERSIST)
+		
 		public List<Appointement> getAppointements() {
 			return appointements;
 		}
+
+
+		public List<TypeOfAppointement> getTypeAppointements() {
+		return typeAppointements;
+	}
+
+
+	public void setTypeAppointements(List<TypeOfAppointement> typeAppointements) {
+		this.typeAppointements = typeAppointements;
+	}
 
 
 		public void setAppointements(List<Appointement> app) {

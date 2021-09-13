@@ -2,6 +2,7 @@ package jpa;
 
 import java.util.Date;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,12 +16,21 @@ import javax.persistence.OneToMany;
 public class Appointement{
 	
 	/*Variables*/
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private Date appointementStart;
 	private Date appointementEnd;
 	private String appointementPlace;
+	
+	@ManyToOne
+	@JoinColumn(name="typeAppointement_id", nullable=false)
 	private TypeOfAppointement typeAppointement;
+	@ManyToOne
+	@JoinColumn(name="customer_id", nullable=false)
 	private Customer customer;	
+	@ManyToOne
+	@JoinColumn(name="worker_id", nullable=false)
 	private Worker worker;
 	/*Construtors*/	
 	public Appointement(long id, Date appointementStart, Date appointementEnd, String appointementPlace) {
@@ -41,8 +51,7 @@ public class Appointement{
 	
 	/*Getters && Setters*/
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    
 	public long getId() {
 		return id;
 	}
@@ -74,8 +83,7 @@ public class Appointement{
 	public void setAppointementPlace(String appointementPlace) {
 		this.appointementPlace = appointementPlace;
 	}
-	@ManyToOne
-	@JoinColumn(name="id", nullable=false)
+	
 	public Worker getWorker() {
 		return worker;
 	}
@@ -83,8 +91,7 @@ public class Appointement{
 	public void setWorker(Worker worker) {
 		this.worker = worker;
 	}
-	@ManyToOne
-	@JoinColumn(name="id", nullable=false)
+	
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -92,8 +99,7 @@ public class Appointement{
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	@ManyToOne
-	@JoinColumn(name="id", nullable=false)
+	
 	public TypeOfAppointement getTypeAppointement() {
 		return typeAppointement;
 	}

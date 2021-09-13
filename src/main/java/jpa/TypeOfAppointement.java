@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,12 +22,18 @@ import javax.persistence.OneToOne;
 public class TypeOfAppointement {
 	
 	/*Variables*/
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private String appointementDescription;
 	private int appointementLimit;
+	@OneToMany(mappedBy = "typeAppointement", cascade = CascadeType.PERSIST)
+	@ElementCollection
 	private List<Appointement> appointement = new ArrayList<Appointement>();	
+	@ManyToOne
+	@JoinColumn(name="worker_id", nullable=false)
 	private Worker worker;
-	private Customer customer;
+	
 	
 	
 	/*Constructors*/
@@ -45,8 +52,7 @@ public class TypeOfAppointement {
 
 	/*Getters && setters*/
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    
 	public long getId() {
 		return id;
 	}
@@ -70,7 +76,7 @@ public class TypeOfAppointement {
 	public void setAppointementLimit(int appointementLimit) {
 		this.appointementLimit = appointementLimit;
 	}
-	@OneToMany(mappedBy = "TypeOfAppointement", cascade = CascadeType.PERSIST)
+	
 	public List<Appointement> getAppointement() {
 		return appointement;
 	}
@@ -78,23 +84,13 @@ public class TypeOfAppointement {
 	public void setAppointement(List<Appointement> appointement) {
 		this.appointement = appointement;
 	}
-	@OneToOne
-	@JoinColumn(name="id", nullable=false)
+	
 	public Worker getWorker() {
 		return worker;
 	}
 
 	public void setWorker(Worker worker) {
 		this.worker = worker;
-	}
-	@OneToOne
-	@JoinColumn(name="id", nullable=false)
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
 	}
 	
 	

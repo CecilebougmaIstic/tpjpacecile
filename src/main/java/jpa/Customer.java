@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,8 +21,12 @@ import javax.persistence.OneToMany;
 public class Customer extends User{
 	
 	/*variables*/
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private String bankCard;
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
+	@ElementCollection
 	private List<Appointement> appointement = new ArrayList<Appointement>();
 	
 	/*Constructor*/
@@ -49,8 +54,7 @@ public class Customer extends User{
 	
 	/*Getters && Setters*/
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    
 	public long getId() {
 		return id;
 	}
@@ -63,7 +67,7 @@ public class Customer extends User{
 	public void setBankCard(String bankCard) {
 		this.bankCard = bankCard;
 	}
-	@OneToMany(mappedBy = "Customer", cascade = CascadeType.PERSIST)
+	
 	public List<Appointement> getAppointement() {
 		return appointement;
 	}
