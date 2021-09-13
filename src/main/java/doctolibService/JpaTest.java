@@ -1,10 +1,14 @@
-package doctolibService.model;
+package doctolibService;
 
 import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
+
+import doctolibService.model.Customer;
+import doctolibService.model.TypeOfAppointement;
+import doctolibService.model.Worker;
 
 public class JpaTest {
 
