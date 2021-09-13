@@ -48,7 +48,29 @@ public class Appointement{
 		this.appointementPlace = appointementPlace;
 	}
 
+
+	public Appointement(Date appointementStart, Date appointementEnd, String appointementPlace,
+			TypeOfAppointement typeAppointement, Customer customer) {
+		super();
+		this.appointementStart = appointementStart;
+		this.appointementEnd = appointementEnd;
+		this.appointementPlace = appointementPlace;
+		this.typeAppointement = typeAppointement;
+		this.customer = customer;
+	}
+
+	public Appointement(Date appointementStart, Date appointementEnd, String appointementPlace,
+			TypeOfAppointement typeAppointement, Worker worker) {
+		super();
+		this.appointementStart = appointementStart;
+		this.appointementEnd = appointementEnd;
+		this.appointementPlace = appointementPlace;
+		this.typeAppointement = typeAppointement;
+		this.worker = worker;
+	}
 	
+	
+
 	/*Getters && Setters*/
 
     
@@ -107,7 +129,13 @@ public class Appointement{
 	public void setTypeAppointement(TypeOfAppointement typeAppointement) {
 		this.typeAppointement = typeAppointement;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Appointement [id=" + id + ", appointementStart=" + appointementStart + ", appointementEnd="
+				+ appointementEnd + ", appointementPlace=" + appointementPlace + ", typeAppointement="
+				+ typeAppointement + ", customer=" + customer.toString() + ", worker=" + worker.toString() + "]";
+	}
 
 	
 	

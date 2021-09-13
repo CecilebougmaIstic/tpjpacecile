@@ -40,6 +40,7 @@ public class Worker extends User{
 	
 	
 	
+	
 
 	/*Constructor*/
 	public Worker(long id, String job, String bakRib) {
@@ -51,6 +52,9 @@ public class Worker extends User{
 	}
 
 
+	
+
+	
 	public Worker(String firstName, String lastName, String email, String password,String job, String bakRib) {
 		super();
 		this.job = job;
@@ -60,7 +64,6 @@ public class Worker extends User{
 		this.email = email;
 		this.password = password;
 	}
-
 	/*Getters && Setters*/
 
    
@@ -115,6 +118,16 @@ public class Worker extends User{
 
 		public void setAppointements(List<Appointement> app) {
 			this.appointements = app;
+		}
+
+
+
+
+
+		@Override
+		public String toString() {
+			return "Worker [id=" + id + ", job=" + job + ", bakRib=" + bakRib + ", typeAppointements="
+					+ typeAppointements + ", appointements=" + appointements + "]";
 		}
 
 	

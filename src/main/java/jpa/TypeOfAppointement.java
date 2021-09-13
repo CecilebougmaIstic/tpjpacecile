@@ -37,11 +37,12 @@ public class TypeOfAppointement {
 	
 	
 	/*Constructors*/
-	public TypeOfAppointement(long id, String appointementDescription, int appointementLimit) {
+	public TypeOfAppointement(String appointementDescription, int appointementLimit,Worker worker) {
 		super();
 		this.id = id;
 		this.appointementDescription = appointementDescription;
 		this.appointementLimit = appointementLimit;
+		this.worker= worker;
 	}
 
 	public TypeOfAppointement(String appointementDescription, int appointementLimit) {
@@ -49,7 +50,8 @@ public class TypeOfAppointement {
 		this.appointementDescription = appointementDescription;
 		this.appointementLimit = appointementLimit;
 	}
-
+	
+	
 	/*Getters && setters*/
 
     
@@ -91,6 +93,13 @@ public class TypeOfAppointement {
 
 	public void setWorker(Worker worker) {
 		this.worker = worker;
+	}
+
+	@Override
+	public String toString() {
+		return "TypeOfAppointement [id=" + id + ", appointementDescription=" + appointementDescription
+				+ ", appointementLimit=" + appointementLimit + ", appointement=" + appointement + ", worker=" + worker.toString()
+				+ "]";
 	}
 	
 	
