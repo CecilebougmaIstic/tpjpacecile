@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 
+import doctolibService.dao.WorkerDao;
 import doctolibService.model.Customer;
 import doctolibService.model.TypeOfAppointement;
 import doctolibService.model.Worker;
@@ -16,13 +17,19 @@ public class JpaTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
+		/*
 		EntityManager manager = EntityManagerHelper.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
+		*/
 
-
+			WorkerDao wDao = new WorkerDao();
+		Worker workerD = new Worker("Bouda","Marie","boudamarie@fff.com","asdc","mecanisien","12356");
+					
+			wDao.save(workerD);
+					
 		try {
+				/*
 				Worker wok = new Worker("Bouda","Jérôme","boudajerome@fff.com","asdc","mecanisien","12356");
 				manager.persist(wok);
 				System.out.println(wok.toString());
@@ -38,18 +45,22 @@ public class JpaTest {
 				Worker woker = new Worker("Balime","minet","balimaminet@yahoo.fr","adcvf", "Sécretaire", "12sdd58");
 				manager.persist(woker);
 				
-				
+				*/
 				
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		/*
 		tx.commit();
 
 
 		manager.close();
 		EntityManagerHelper.closeEntityManagerFactory();
 		//		factory.close();
+		 
+		 */
 	}
 
 

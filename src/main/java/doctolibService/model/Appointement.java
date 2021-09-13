@@ -1,5 +1,6 @@
 package doctolibService.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Calendar;
 
@@ -14,7 +15,7 @@ import javax.persistence.OneToMany;
 
 /*This class manage an appointement */
 @Entity
-public class Appointement{
+public class Appointement implements Serializable{
 	
 	/*Variables*/
 	@Id

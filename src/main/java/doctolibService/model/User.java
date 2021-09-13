@@ -1,5 +1,7 @@
 package doctolibService.model;
 
+import java.io.Serializable;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,7 @@ import javax.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="User_type")
-public abstract class User {
+public abstract class User implements Serializable {
 	
 	/*Variables*/	
 	private long id;

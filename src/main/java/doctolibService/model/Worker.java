@@ -1,5 +1,6 @@
 package doctolibService.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import javax.persistence.OneToOne;
 @Entity
 
 @DiscriminatorValue("W")
-public class Worker extends User{
+public class Worker extends User implements Serializable{
 	
 	/*Variables*/
 	 @Id
