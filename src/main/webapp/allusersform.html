@@ -1,0 +1,29 @@
+<html>
+
+
+<body>
+<FORM Method="GET" Action="/AllUsers">
+
+<button onclick="myFunction()">Liste des utilisateurs</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "allusersform";
+}
+</script>
+
+
+FirstName :         <INPUT type="text" size="150" name="firstName"><BR>
+LastName :     <INPUT type="text" size="150" name="lastName"><BR>
+email :         <INPUT type="text" size="250" name="email"><BR>
+password :         <INPUT type="text" size="150" name="password"><BR>
+Numéro de RIB Bancaire :     <INPUT type="text" size="150" name="RIB"><BR>
+Numéro de Carte Bancaire :  <INPUT type="text" size="150" name="Carte Bancaire"><BR>
+job :         <INPUT type="text" size="150" name="job"><BR>
+
+        <INPUT type="submit" value="Send">
+</FORM>
+</body>
+</html>
